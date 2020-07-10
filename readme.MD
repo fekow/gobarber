@@ -135,7 +135,7 @@ enquanto a fila roda em outro processo de fundo.
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/)
 - Emulador ou Dispositivo físico
-- [Docker]()
+- [Docker](https://www.docker.com/)
 
 ### Como executar
 
@@ -160,8 +160,6 @@ Rode estes comandos para instalar os 3 banco de dados do backend pelo docker.
 - Execute ```cd backend``` ```yarn``` para instalar as dependências do servidor.
 
 - Execute ```yarn sequelize db:migrate``` para criar as tabelas
-
-- Execute ```yarn sequelize db:seed:all``` para criar uma entrada do admin
 
 - Para rodar o servidor, abra dois terminais na pasta e rode ``` yarn dev``` e
  ```yarn queue```.
