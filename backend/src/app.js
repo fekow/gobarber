@@ -4,6 +4,10 @@ import path from 'path';
 import cors from 'cors';
 import Youch from 'youch';
 import * as Sentry from '@sentry/node';
+import helmet from 'helmet';
+import redis from 'redis';
+import RateLimit from 'express-rate-limit';
+import RateLimitRedis from 'rate-limit-redis';
 import 'express-async-errors'; // pega erro das funcoes async, fica antes das rotas
 
 import routes from './routes';
@@ -25,12 +29,28 @@ class App {
 
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler()); // insiro antes de todos middleware
-    this.server.use(cors()); // aqui passaria o endereço que pode acessar o server{origin: "htttp..."}.
+    this.server.use(cors()); // aqui passaria o endereço que pode acessar o server{origin: "http..."}.
+    this.server.use(helmet());
     this.server.use(express.json()); // uso linguagem json pra ser restful e funcionar o req.body
     this.server.use(
       '/files',
       express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')) // declara o destino de files publico
     );
+    // limita o numero de requisições dentro do site
+    if (process.env.NODE_ENV !== 'development') {
+      this.server.use(
+        new RateLimit({
+          store: new RateLimitRedis({
+            client: redis.createClient({
+              host: process.env.REDIS_HOST,
+              port: process.env.REDIS_PORT,
+            }),
+          }),
+          windowMs: 1000 * 60 * 15,
+          max: 200,
+        })
+      );
+    }
   }
 
   routes() {
