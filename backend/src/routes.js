@@ -11,23 +11,32 @@ import ScheduleController from './app/controllers/ScheduleController';
 import NotificationController from './app/controllers/NotificationController';
 import AvailableController from './app/controllers/AvailableController';
 
+import validateUserStore from './app/validators/UserStore';
+import validateUserUpdate from './app/validators/UserUpdate';
+import validateSessionStore from './app/validators/SessionStore';
+import validateAppointmentStore from './app/validators/AppointmentStore';
+
 import authMiddleware from './app/middlewares/auth';
 
 const upload = multer(multerConfig);
 
 const routes = new Router();
 
-routes.post('/users', UserController.store);
-routes.post('/sessions', SessionController.store); // só pode ter 1 store por restful, session fica em outro lugar.
+routes.post('/users', validateUserStore, UserController.store);
+routes.post('/sessions', validateSessionStore, SessionController.store); // só pode ter 1 store por restful, session fica em outro lugar.
 
 routes.use(authMiddleware); // todo codigo apartir daqui vai precisa estar logado(com token) pra carregar
 
-routes.put('/users', UserController.update); // posso usar só o middleware pra faze as funcoes
+routes.put('/users', validateUserUpdate, UserController.update); // posso usar só o middleware pra faze as funcoes
 
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);
 
-routes.post('/appointments', AppointmentController.store);
+routes.post(
+  '/appointments',
+  validateAppointmentStore,
+  AppointmentController.store
+);
 routes.get('/appointments', AppointmentController.index);
 routes.delete('/appointments/:id', AppointmentController.delete);
 

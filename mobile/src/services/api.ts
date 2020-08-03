@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://10.0.2.2:1337',
+  baseURL: 'https://fathomless-stream-35956.herokuapp.com',
 });
 
 export default api;
