@@ -1038,7 +1038,7 @@ eslint@^6.8.0:
     js-yaml "^3.13.1"
     json-stable-stringify-without-jsonify "^1.0.1"
     levn "^0.3.0"
-    lodash "^4.17.14"
+    lodash "^4.17.19"
     minimatch "^3.0.4"
     mkdirp "^0.5.1"
     natural-compare "^1.4.0"
@@ -1577,7 +1577,7 @@ inquirer@^7.0.0:
     cli-width "^2.0.0"
     external-editor "^3.0.3"
     figures "^3.0.0"
-    lodash "^4.17.15"
+    lodash "^4.17.19"
     mute-stream "0.0.8"
     run-async "^2.4.0"
     rxjs "^6.5.3"
@@ -3017,7 +3017,7 @@ sequelize-cli@^5.5.1:
     cli-color "^1.4.0"
     fs-extra "^7.0.1"
     js-beautify "^1.8.8"
-    lodash "^4.17.5"
+    lodash "^4.17.19"
     resolve "^1.5.0"
     umzug "^2.1.0"
     yargs "^13.1.0"
@@ -3037,7 +3037,7 @@ sequelize@^5.21.7:
     debug "^4.1.1"
     dottie "^2.0.0"
     inflection "1.12.0"
-    lodash "^4.17.15"
+    lodash "^4.17.19"
     moment "^2.24.0"
     moment-timezone "^0.5.21"
     retry-as-promised "^3.2.0"
@@ -3319,7 +3319,7 @@ table@^5.2.3:
   integrity sha512-wmEc8m4fjnob4gt5riFRtTu/6+4rSe12TpAELNSqHMfF3IqnA+CH37USM6/YR3qRZv7e56kAEAtd6nKZaxe0Ug==
   dependencies:
     ajv "^6.10.2"
-    lodash "^4.17.14"
+    lodash "^4.17.19"
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
@@ -3714,7 +3714,7 @@ yup@^0.28.5:
   dependencies:
     "@babel/runtime" "^7.9.6"
     fn-name "~3.0.0"
-    lodash "^4.17.15"
+    lodash "^4.17.19"
     lodash-es "^4.17.11"
     property-expr "^2.0.2"
     synchronous-promise "^2.0.10"
